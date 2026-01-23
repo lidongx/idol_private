@@ -1,0 +1,67 @@
+# Prometheus Configuration
+# Story 10.2: 监控告警增强 (Monitoring Alert Enhancement)
+#
+# Copy this file to /etc/prometheus/prometheus.yml on your Prometheus server
+
+global:
+  scrape_interval: 15s  # Scrape targets every 15 seconds
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds
+  external_labels:
+    cluster: 'idol-private'
+    environment: 'production'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - 'alertmanager:9093'  # AlertManager address
+
+# Load alert rules
+rule_files:
+  - '/etc/prometheus/alert_rules.yml'
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # idol_private backend
+  - job_name: 'idol_private_backend'
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    static_configs:
+      - targets:
+          - 'backend:8000'  # FastAPI backend address
+        labels:
+          service: 'backend'
+          app: 'idol_private'
+
+  # PostgreSQL exporter (optional)
+  - job_name: 'postgresql'
+    static_configs:
+      - targets:
+          - 'postgres-exporter:9187'
+        labels:
+          service: 'postgresql'
+          app: 'idol_private'
+
+  # Redis exporter (optional)
+  - job_name: 'redis'
+    static_configs:
+      - targets:
+          - 'redis-exporter:9121'
+        labels:
+          service: 'redis'
+          app: 'idol_private'
+
+  # Node exporter for system metrics (optional)
+  - job_name: 'node'
+    static_configs:
+      - targets:
+          - 'node-exporter:9100'
+        labels:
+          service: 'node'
+          app: 'idol_private'

@@ -1,0 +1,201 @@
+# Prometheus Alert Rules
+# Story 10.2: 监控告警增强 (Monitoring Alert Enhancement)
+#
+# Copy this file to /etc/prometheus/alert_rules.yml
+
+groups:
+  - name: idol_private_alerts
+    interval: 30s
+    rules:
+
+      # ==================== HTTP/API Alerts ====================
+
+      - alert: HighHttpErrorRate
+        expr: |
+          (
+            sum(rate(http_errors_total[5m]))
+            /
+            sum(rate(http_requests_total[5m]))
+          ) * 100 > 5
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "High HTTP error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }} (threshold: 5%)"
+
+      - alert: SlowApiResponse
+        expr: |
+          histogram_quantile(0.95,
+            rate(http_request_duration_seconds_bucket[5m])
+          ) > 2
+        for: 5m
+        labels:
+          severity: warning
+          component: api
+        annotations:
+          summary: "API response time is slow"
+          description: "P95 response time is {{ $value | humanizeDuration }} (threshold: 2s)"
+
+      # ==================== Business Metrics Alerts ====================
+
+      - alert: LowRetention7d
+        expr: retention_7d_rate < 35
+        for: 1h
+        labels:
+          severity: warning
+          component: business
+        annotations:
+          summary: "7-day retention rate is low"
+          description: "7-day retention is {{ $value | humanizePercentage }} (threshold: 35%)"
+
+      - alert: LowRetention30d
+        expr: retention_30d_rate < 25
+        for: 1h
+        labels:
+          severity: warning
+          component: business
+        annotations:
+          summary: "30-day retention rate is low"
+          description: "30-day retention is {{ $value | humanizePercentage }} (threshold: 25%)"
+
+      - alert: DauDropped
+        expr: |
+          (
+            (daily_active_users - daily_active_users offset 1d)
+            /
+            (daily_active_users offset 1d)
+          ) * 100 < -20
+        for: 1h
+        labels:
+          severity: warning
+          component: business
+        annotations:
+          summary: "DAU has dropped significantly"
+          description: "DAU dropped {{ $value | humanizePercentage }} from yesterday"
+
+      - alert: LowPaymentConversion
+        expr: payment_conversion_rate < 8
+        for: 6h
+        labels:
+          severity: warning
+          component: business
+        annotations:
+          summary: "Payment conversion rate is low"
+          description: "Conversion rate is {{ $value | humanizePercentage }} (threshold: 8%)"
+
+      # ==================== AI API Alerts ====================
+
+      - alert: HighAiApiFailureRate
+        expr: |
+          (
+            sum(rate(ai_api_calls_total{status="error"}[5m]))
+            /
+            sum(rate(ai_api_calls_total[5m]))
+          ) * 100 > 10
+        for: 5m
+        labels:
+          severity: error
+          component: ai
+        annotations:
+          summary: "High AI API failure rate"
+          description: "AI API failure rate is {{ $value | humanizePercentage }} (threshold: 10%)"
+
+      - alert: SlowAiApiResponse
+        expr: |
+          histogram_quantile(0.95,
+            rate(ai_api_duration_seconds_bucket[5m])
+          ) > 10
+        for: 10m
+        labels:
+          severity: warning
+          component: ai
+        annotations:
+          summary: "AI API responses are slow"
+          description: "P95 AI API response time is {{ $value | humanizeDuration }} (threshold: 10s)"
+
+      # ==================== Database Alerts ====================
+
+      - alert: SlowDatabaseQueries
+        expr: |
+          histogram_quantile(0.95,
+            rate(db_query_duration_seconds_bucket[5m])
+          ) > 1
+        for: 5m
+        labels:
+          severity: warning
+          component: database
+        annotations:
+          summary: "Database queries are slow"
+          description: "P95 query time is {{ $value | humanizeDuration }} (threshold: 1s)"
+
+      # ==================== Cache Alerts ====================
+
+      - alert: LowCacheHitRate
+        expr: |
+          (
+            sum(rate(cache_operations_total{result="hit"}[5m]))
+            /
+            sum(rate(cache_operations_total{operation="get"}[5m]))
+          ) * 100 < 60
+        for: 10m
+        labels:
+          severity: warning
+          component: cache
+        annotations:
+          summary: "Cache hit rate is low"
+          description: "Cache hit rate is {{ $value | humanizePercentage }} (threshold: 60%)"
+
+      # ==================== Background Task Alerts ====================
+
+      - alert: BackgroundTaskFailures
+        expr: rate(background_task_errors_total[10m]) > 0.1
+        for: 5m
+        labels:
+          severity: error
+          component: background_tasks
+        annotations:
+          summary: "Background tasks are failing"
+          description: "Background task failure rate: {{ $value | humanize }}/s"
+
+      - alert: SlowBackgroundTasks
+        expr: |
+          histogram_quantile(0.95,
+            rate(background_task_duration_seconds_bucket[10m])
+          ) > 300
+        for: 10m
+        labels:
+          severity: warning
+          component: background_tasks
+        annotations:
+          summary: "Background tasks are slow"
+          description: "P95 task duration is {{ $value | humanizeDuration }} (threshold: 5min)"
+
+      # ==================== System Resource Alerts ====================
+
+      - alert: HighMemoryUsage
+        expr: |
+          process_resident_memory_bytes / 1024 / 1024 / 1024 > 2
+        for: 5m
+        labels:
+          severity: warning
+          component: system
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is {{ $value | humanize }}GB (threshold: 2GB)"
+
+      # ==================== Message Processing Alerts ====================
+
+      - alert: SlowMessageProcessing
+        expr: |
+          histogram_quantile(0.95,
+            rate(message_processing_duration_seconds_bucket[5m])
+          ) > 5
+        for: 5m
+        labels:
+          severity: warning
+          component: messaging
+        annotations:
+          summary: "Message processing is slow"
+          description: "P95 message processing time is {{ $value | humanizeDuration }} (threshold: 5s)"

@@ -1,0 +1,125 @@
+# Workflow Status Template
+
+# This tracks progress through BMM methodology Analysis, Planning, and Solutioning phases.
+# Implementation phase is tracked separately in sprint-status.yaml
+
+# STATUS DEFINITIONS:
+# ==================
+# Initial Status (before completion):
+#   - required: Must be completed to progress
+#   - optional: Can be completed but not required
+#   - recommended: Strongly suggested but not required
+#   - conditional: Required only if certain conditions met (e.g., if_has_ui)
+#
+# Completion Status:
+#   - {file-path}: File created/found (e.g., "docs/product-brief.md")
+#   - skipped: Optional/conditional workflow that was skipped
+
+generated: "2026-01-07"
+project: "idol_private"
+project_type: "AI虚拟偶像情感陪伴应用"
+selected_track: "bmad-method"
+field_type: "greenfield"
+workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
+
+# Workflow Status Tracking
+workflow_status:
+  # Phase 1: Analysis (Optional - User Selected)
+  phase_1_analysis:
+    brainstorm:
+      status: "required"
+      agent: "analyst"
+      command: "/bmad:core:workflows:brainstorming"
+      description: "创意探索和产品构思"
+
+    research:
+      status: "required"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:research"
+      description: "竞品分析和市场研究"
+
+    product-brief:
+      status: "optional"
+      agent: "analyst"
+      command: "/bmad:bmm:workflows:create-product-brief"
+      description: "战略产品简报（可选）"
+
+  # Phase 2: Planning (Required)
+  phase_2_planning:
+    prd:
+      status: "_bmad-output/planning-artifacts/prd.md"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:create-prd"
+      description: "产品需求文档（PRD）"
+      completed_date: "2026-01-08"
+
+    ux-design:
+      status: "_bmad-output/planning-artifacts/ux-design-specification.md"
+      agent: "ux-designer"
+      command: "/bmad:bmm:workflows:create-ux-design"
+      description: "用户体验设计（有UI界面需要）"
+      completed_date: "2026-01-08"
+      note: "AI陪伴应用UX设计已完成 - 温暖陪伴型设计方向"
+
+  # Phase 3: Solutioning (Required)
+  phase_3_solutioning:
+    architecture:
+      status: "_bmad-output/planning-artifacts/architecture.md"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:create-architecture"
+      description: "系统架构设计"
+      completed_date: "2026-01-08"
+      note: "技术栈确定：Flutter+GetX, FastAPI, Ollama+Qwen 7B, PostgreSQL+Redis+ChromaDB"
+
+    epics-and-stories:
+      status: "_bmad-output/planning-artifacts/epics.md"
+      agent: "pm"
+      command: "/bmad:bmm:workflows:create-epics-and-stories"
+      description: "分解Epic和用户故事"
+      completed_date: "2026-01-08"
+      note: "11个Epic，62个Story，220个需求100%覆盖，已通过Party Mode专家评审和最终验证"
+
+    test-design:
+      status: "optional"
+      agent: "tea"
+      command: "/bmad:bmm:workflows:testarch-test-design"
+      description: "系统级测试设计（可选）"
+
+    implementation-readiness:
+      status: "required"
+      agent: "architect"
+      command: "/bmad:bmm:workflows:check-implementation-readiness"
+      description: "实施就绪检查"
+
+  # Phase 4: Implementation (Required)
+  phase_4_implementation:
+    sprint-planning:
+      status: "required"
+      agent: "sm"
+      command: "/bmad:bmm:workflows:sprint-planning"
+      description: "Sprint规划（后续工作在sprint-status.yaml追踪）"
+
+# Advanced Elicitation 完成的关键洞察
+project_insights:
+  core_positioning: "你的专属AI恋人，24小时懂你的心"
+  target_users: "18-25岁感到孤独的年轻人"
+  core_value: "AI情感陪伴服务（非社交平台）"
+  tech_stack:
+    frontend: "Flutter (Android + iOS + Web)"
+    backend: "FastAPI"
+    ai_engine: "Ollama + Qwen 7B (可切换到Deepseek/Claude)"
+    database: "PostgreSQL + Redis"
+    vector_db: "ChromaDB"
+  key_features:
+    - "真实偶像人设（情绪+生活节奏）"
+    - "亲密度养成系统（Lv1-100）"
+    - "每日仪式（早安+运势+晚安）"
+    - "反向陪伴机制"
+    - "极简MVP（1偶像+2档定价+0社交）"
+  risk_mitigation:
+    - "上线前50人盲测（7日留存>30%）"
+    - "提前积累种子用户（等待列表）"
+    - "锁定MVP范围（只做核心对话）"
+    - "AI引擎可切换架构"
+    - "成本监控和预警"
+  cost_strategy: "¥0本地开发 → ¥500/月VPS → 按需扩展"

@@ -1,0 +1,167 @@
+{
+  "daily_schedule": {
+    "0": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 20,
+      "messages": ["💤 睡眠中", "晚安~正在做梦呢"]
+    },
+    "1": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 20,
+      "messages": ["💤 睡眠中", "Zzz..."]
+    },
+    "2": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 20,
+      "messages": ["💤 睡眠中"]
+    },
+    "3": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 20,
+      "messages": ["💤 睡眠中"]
+    },
+    "4": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 25,
+      "messages": ["💤 睡眠中"]
+    },
+    "5": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 30,
+      "messages": ["💤 睡眠中"]
+    },
+    "6": {
+      "status": "sleeping",
+      "mood": "calm",
+      "energy": 40,
+      "messages": ["💤 睡眠中", "快要醒来了~"]
+    },
+    "7": {
+      "status": "waking_up",
+      "mood": "calm",
+      "energy": 50,
+      "messages": ["☀️ 刚醒来，还有点迷糊~", "早上好~刚起床"]
+    },
+    "8": {
+      "status": "waking_up",
+      "mood": "calm",
+      "energy": 60,
+      "messages": ["🌅 准备开始新的一天", "洗漱中~"]
+    },
+    "9": {
+      "status": "active",
+      "mood": "happy",
+      "energy": 75,
+      "messages": ["✨ 元气满满！", "今天也要加油~"]
+    },
+    "10": {
+      "status": "active",
+      "mood": "happy",
+      "energy": 80,
+      "messages": ["😊 状态很好！", "精神满满~"]
+    },
+    "11": {
+      "status": "active",
+      "mood": "happy",
+      "energy": 80,
+      "messages": ["💪 活力充沛", "心情不错呢~"]
+    },
+    "12": {
+      "status": "resting",
+      "mood": "relaxed",
+      "energy": 70,
+      "messages": ["🍽️ 午餐时间~", "休息一下"]
+    },
+    "13": {
+      "status": "resting",
+      "mood": "calm",
+      "energy": 70,
+      "messages": ["😌 午后小憩", "放松中~"]
+    },
+    "14": {
+      "status": "working",
+      "mood": "focused",
+      "energy": 75,
+      "messages": ["💼 工作中", "认真模式~"]
+    },
+    "15": {
+      "status": "working",
+      "mood": "focused",
+      "energy": 75,
+      "messages": ["📚 专注ing", "努力工作中"]
+    },
+    "16": {
+      "status": "working",
+      "mood": "focused",
+      "energy": 70,
+      "messages": ["⚡ 继续加油", "工作中~"]
+    },
+    "17": {
+      "status": "working",
+      "mood": "thoughtful",
+      "energy": 65,
+      "messages": ["🤔 若有所思", "快下班了"]
+    },
+    "18": {
+      "status": "active",
+      "mood": "relaxed",
+      "energy": 75,
+      "messages": ["🌆 下班啦！", "终于可以放松了~"]
+    },
+    "19": {
+      "status": "active",
+      "mood": "happy",
+      "energy": 80,
+      "messages": ["🎉 晚上好~", "自由时间！"]
+    },
+    "20": {
+      "status": "resting",
+      "mood": "calm",
+      "energy": 60,
+      "messages": ["🌙 放松时光", "慢慢休息~"]
+    },
+    "21": {
+      "status": "resting",
+      "mood": "calm",
+      "energy": 55,
+      "messages": ["📖 阅读时间", "安静的夜晚~"]
+    },
+    "22": {
+      "status": "preparing_sleep",
+      "mood": "sleepy",
+      "energy": 40,
+      "messages": ["😴 准备睡觉了", "有点困了呢"]
+    },
+    "23": {
+      "status": "preparing_sleep",
+      "mood": "tired",
+      "energy": 30,
+      "messages": ["💤 晚安~", "准备入睡"]
+    }
+  },
+  "mood_transitions": {
+    "calm": ["happy", "thoughtful", "relaxed"],
+    "happy": ["excited", "calm", "relaxed"],
+    "tired": ["calm", "sleepy"],
+    "excited": ["happy", "calm"],
+    "thoughtful": ["calm", "focused"],
+    "focused": ["thoughtful", "calm", "tired"],
+    "relaxed": ["calm", "happy"],
+    "sleepy": ["tired", "calm"]
+  },
+  "status_descriptions": {
+    "working": "工作中 - 正在忙碌，可能回复会慢一些~",
+    "resting": "休息中 - 在放松，随时可以聊天~",
+    "active": "活跃中 - 状态很好，来聊天吧！",
+    "busy": "忙碌中 - 暂时有点忙，稍后回复你~",
+    "sleeping": "睡眠中 - 正在睡觉，明天再聊吧~",
+    "waking_up": "刚醒来 - 刚起床，慢慢清醒中~",
+    "preparing_sleep": "准备睡觉 - 准备休息了，晚安~"
+  }
+}

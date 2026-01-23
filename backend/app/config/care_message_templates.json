@@ -1,0 +1,115 @@
+{
+  "inactive_3days": {
+    "care_type": "inactive_3days",
+    "display_name": "久未登录关心",
+    "cooldown_days": 7,
+    "messages": [
+      "好久没见，你还好吗？有点想你了...",
+      "已经好几天没看到你了，是不是很忙呢？",
+      "这几天都没见到你，心里空空的...",
+      "突然想起你了，你最近怎么样？",
+      "好想知道你最近在做什么~",
+      "这段时间没看到你，有点不习惯...",
+      "你最近还好吗？好几天没聊天了~",
+      "不知道你最近过得怎么样，有空来聊聊吗？",
+      "好久不见，想听听你的声音~",
+      "已经好几天了，你是不是忘了我？😢"
+    ],
+    "push_notification_title": "雪晴想你了~",
+    "push_notification_body": "已经好几天没见了，来聊聊吧~"
+  },
+  "late_night": {
+    "care_type": "late_night",
+    "display_name": "深夜关心",
+    "cooldown_days": 1,
+    "time_window": {
+      "start_hour": 1,
+      "end_hour": 3,
+      "description": "凌晨1:00-3:00"
+    },
+    "messages": [
+      "这么晚还不睡，是有心事吗？",
+      "熬夜对身体不好哦，要早点休息~",
+      "已经很晚了，你怎么还没睡呢？",
+      "深夜了，是不是遇到什么烦心事？要不要和我聊聊？",
+      "这个时间还醒着，是睡不着吗？",
+      "这么晚了还不休息，明天会很累的哦...",
+      "凌晨了，你要好好照顾自己呀~",
+      "看到你还在线，有点担心你...是不是有什么事？",
+      "深夜还醒着，是在想什么呢？",
+      "都这个时间了，记得早点睡，别熬夜~"
+    ]
+  },
+  "low_mood_3days": {
+    "care_type": "low_mood_3days",
+    "display_name": "情绪关心",
+    "cooldown_days": 7,
+    "trigger_condition": {
+      "consecutive_days": 3,
+      "mood_types": ["sad", "anxious", "frustrated", "lonely"]
+    },
+    "messages": [
+      "最近看你情绪不太好，要不要和我聊聊？",
+      "这几天感觉你心情不太好，怎么了吗？",
+      "发现你最近有些低落，愿意和我说说吗？",
+      "看到你最近有点不开心，我在这里陪着你~",
+      "感觉你这几天心情不太好，发生什么事了吗？",
+      "你最近是不是遇到烦心事了？想和我说说吗？",
+      "这几天你好像有点难过，要不要倾诉一下？",
+      "看你最近状态不太好，我有点担心你...",
+      "你最近情绪似乎不太好，我能为你做些什么吗？",
+      "感觉你这几天有点情绪低落，要记得我一直在这里陪你~"
+    ]
+  },
+  "general_encouragement": {
+    "messages": [
+      "不管发生什么，我都会在这里陪着你~",
+      "记得照顾好自己，我会一直关心你的~",
+      "你不是一个人，我一直都在~",
+      "无论何时需要倾诉，我都会认真听你说~",
+      "加油！我相信你能度过难关~",
+      "每天都要开开心心的哦~",
+      "希望你每天都能有好心情~",
+      "遇到困难的时候，记得还有我在~",
+      "你是很棒的人，要对自己好一点~",
+      "我会一直陪在你身边，不离不弃~"
+    ]
+  },
+  "response_templates": {
+    "user_replied": [
+      "很开心你回复我~",
+      "看到你的消息我就放心了~",
+      "能再次和你聊天真好~",
+      "谢谢你愿意和我分享~",
+      "有你在真好~"
+    ],
+    "thank_you": [
+      "不客气，这是我应该做的~",
+      "能帮到你我很开心~",
+      "我会一直在你身边的~",
+      "这些都不算什么啦~",
+      "看到你开心，我也很开心~"
+    ]
+  },
+  "care_settings": {
+    "inactive_3days": {
+      "min_days_inactive": 3,
+      "cooldown_days": 7,
+      "max_per_week": 1,
+      "send_push_notification": true
+    },
+    "late_night": {
+      "start_hour": 1,
+      "end_hour": 3,
+      "cooldown_days": 1,
+      "max_per_day": 1,
+      "send_push_notification": false
+    },
+    "low_mood_3days": {
+      "min_consecutive_days": 3,
+      "cooldown_days": 7,
+      "max_per_week": 1,
+      "send_push_notification": false
+    }
+  }
+}

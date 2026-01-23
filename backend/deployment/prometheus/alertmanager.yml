@@ -1,0 +1,71 @@
+# AlertManager Configuration
+# Story 10.2: 监控告警增强 (Monitoring Alert Enhancement)
+#
+# Copy this file to /etc/alertmanager/alertmanager.yml
+
+global:
+  resolve_timeout: 5m
+
+# Templates (optional)
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
+
+# Alert routing
+route:
+  # Group by these labels
+  group_by: ['alertname', 'cluster', 'service']
+
+  # Wait this long before sending first notification for a group
+  group_wait: 10s
+
+  # Wait this long before sending notification about new alerts in a group
+  group_interval: 10s
+
+  # Wait this long before re-sending a notification
+  repeat_interval: 12h
+
+  # Default receiver
+  receiver: 'idol-private-webhook'
+
+  # Sub-routes for different severity levels
+  routes:
+    # Critical alerts - send immediately and @ all
+    - match:
+        severity: critical
+      receiver: 'idol-private-webhook'
+      continue: true
+
+    # Warning alerts - send to webhook
+    - match:
+        severity: warning
+      receiver: 'idol-private-webhook'
+      continue: true
+
+    # Info alerts - send to webhook
+    - match:
+        severity: info
+      receiver: 'idol-private-webhook'
+      continue: true
+
+# Receivers configuration
+receivers:
+  # Webhook receiver that sends to our backend
+  - name: 'idol-private-webhook'
+    webhook_configs:
+      - url: 'http://backend:8000/api/v1/webhooks/alertmanager'
+        send_resolved: true
+        http_config:
+          # Optional: Add basic auth if needed
+          # basic_auth:
+          #   username: 'alertmanager'
+          #   password: 'secret'
+
+# Inhibition rules
+# Prevents sending notifications for certain alerts if other alerts are firing
+inhibit_rules:
+  # Inhibit warning alerts if critical alert is firing for same alertname
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'cluster', 'service']

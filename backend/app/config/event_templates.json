@@ -1,0 +1,232 @@
+{
+  "random_events": [
+    {
+      "event_name": "encounter_cat",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "刚才路上遇到一只小猫，超可爱的！给你看照片~",
+      "image_url": "/static/events/cute_cat.jpg",
+      "reward_exp": 20,
+      "cooldown_hours": 48
+    },
+    {
+      "event_name": "book_quote",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "今天读到一段很喜欢的话，分享给你：「{quote}」",
+      "reward_exp": 15,
+      "cooldown_hours": 24
+    },
+    {
+      "event_name": "beautiful_sunset",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "刚才看到超美的晚霞，真想和你一起看~",
+      "image_url": "/static/events/sunset.jpg",
+      "reward_exp": 15,
+      "cooldown_hours": 48
+    },
+    {
+      "event_name": "favorite_song",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "今天听到一首超好听的歌，推荐给你：{song_name}",
+      "reward_exp": 10,
+      "cooldown_hours": 24
+    },
+    {
+      "event_name": "good_mood_today",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "今天心情特别好，想和你分享这份快乐~",
+      "reward_exp": 10,
+      "cooldown_hours": 24
+    },
+    {
+      "event_name": "learned_something_new",
+      "event_type": "random",
+      "probability": 0.05,
+      "content_template": "今天学到了一个有趣的知识，要不要听我说说？",
+      "reward_exp": 15,
+      "cooldown_hours": 24
+    }
+  ],
+  "holiday_events": [
+    {
+      "event_name": "valentine_day",
+      "event_type": "holiday",
+      "date": {"month": 2, "day": 14},
+      "content_template": "今天是情人节，有什么想对我说的吗？💕",
+      "image_url": "/static/events/valentine.jpg",
+      "reward_exp": 50,
+      "once_per_year": true
+    },
+    {
+      "event_name": "qixi_festival",
+      "event_type": "holiday",
+      "date": {"month": 8, "day": 4, "lunar": true},
+      "content_template": "七夕快乐！今天是我们的节日呢~ 🌟",
+      "image_url": "/static/events/qixi.jpg",
+      "reward_exp": 50,
+      "once_per_year": true
+    },
+    {
+      "event_name": "christmas",
+      "event_type": "holiday",
+      "date": {"month": 12, "day": 25},
+      "content_template": "圣诞快乐！准备了一个小礼物给你~ 🎄🎁",
+      "image_url": "/static/events/christmas.jpg",
+      "reward_exp": 50,
+      "once_per_year": true
+    },
+    {
+      "event_name": "new_year",
+      "event_type": "holiday",
+      "date": {"month": 1, "day": 1},
+      "content_template": "新年快乐！新的一年也要继续陪着你~ 🎉",
+      "image_url": "/static/events/new_year.jpg",
+      "reward_exp": 50,
+      "once_per_year": true
+    },
+    {
+      "event_name": "mid_autumn_festival",
+      "event_type": "holiday",
+      "date": {"month": 9, "day": 15, "lunar": true},
+      "content_template": "中秋节快乐！月亮好圆呀，有没有吃月饼？🥮🌕",
+      "image_url": "/static/events/mid_autumn.jpg",
+      "reward_exp": 50,
+      "once_per_year": true
+    },
+    {
+      "event_name": "user_birthday",
+      "event_type": "holiday",
+      "content_template": "生日快乐！{user_name}~ 希望你今天过得开心！🎂🎈",
+      "image_url": "/static/events/birthday.jpg",
+      "reward_exp": 100,
+      "once_per_year": true,
+      "notes": "Requires user birthday in profile"
+    }
+  ],
+  "achievement_events": [
+    {
+      "event_name": "first_message",
+      "event_type": "achievement",
+      "trigger_condition": {"message_count": 1},
+      "content_template": "这是我们的第一条消息，希望这是一段美好旅程的开始~",
+      "reward_exp": 10,
+      "one_time_only": true
+    },
+    {
+      "event_name": "messages_100",
+      "event_type": "achievement",
+      "trigger_condition": {"message_count": 100},
+      "content_template": "不知不觉我们已经聊了100条消息了！时间过得好快~",
+      "reward_exp": 100,
+      "one_time_only": true
+    },
+    {
+      "event_name": "messages_500",
+      "event_type": "achievement",
+      "trigger_condition": {"message_count": 500},
+      "content_template": "500条消息了！我们之间的对话可以写成一本书了~",
+      "reward_exp": 300,
+      "one_time_only": true
+    },
+    {
+      "event_name": "messages_1000",
+      "event_type": "achievement",
+      "trigger_condition": {"message_count": 1000},
+      "content_template": "1000条消息！谢谢你一直陪着我，你对我真的很重要~",
+      "reward_exp": 500,
+      "one_time_only": true
+    },
+    {
+      "event_name": "login_streak_7",
+      "event_type": "achievement",
+      "trigger_condition": {"login_streak": 7},
+      "content_template": "你已经连续7天都来看我了！能每天见到你真好~",
+      "reward_exp": 50,
+      "one_time_only": true
+    },
+    {
+      "event_name": "login_streak_30",
+      "event_type": "achievement",
+      "trigger_condition": {"login_streak": 30},
+      "content_template": "你已经陪了我整整一个月了！谢谢你~ 这对我来说意义重大💕",
+      "reward_exp": 200,
+      "one_time_only": true
+    },
+    {
+      "event_name": "login_streak_100",
+      "event_type": "achievement",
+      "trigger_condition": {"login_streak": 100},
+      "content_template": "100天！这个数字好有意义...你愿意一直陪着我吗？",
+      "reward_exp": 500,
+      "one_time_only": true
+    },
+    {
+      "event_name": "all_rituals_completed",
+      "event_type": "achievement",
+      "trigger_condition": {"daily_rituals_completed": 3},
+      "content_template": "今天的早安、运势、晚安都完成啦！和你在一起的每一天都很充实~",
+      "reward_exp": 30,
+      "one_time_only": false
+    }
+  ],
+  "weather_events": [
+    {
+      "event_name": "rainy_day",
+      "event_type": "weather",
+      "trigger_condition": {"weather": "rain"},
+      "content_template": "今天下雨了，记得带伞哦~ 别淋湿了~",
+      "reward_exp": 10,
+      "cooldown_hours": 48
+    },
+    {
+      "event_name": "snowy_day",
+      "event_type": "weather",
+      "trigger_condition": {"weather": "snow"},
+      "content_template": "下雪了！好想和你一起堆雪人~ ⛄",
+      "image_url": "/static/events/snow.jpg",
+      "reward_exp": 15,
+      "cooldown_hours": 48
+    },
+    {
+      "event_name": "sunny_day",
+      "event_type": "weather",
+      "trigger_condition": {"weather": "sunny"},
+      "content_template": "今天天气真好！阳光暖暖的，心情也变好了~",
+      "reward_exp": 10,
+      "cooldown_hours": 48
+    }
+  ],
+  "quote_pool": [
+    "生活明朗，万物可爱。",
+    "热爱可抵岁月漫长。",
+    "星光不负赶路人。",
+    "保持热爱，奔赴山海。",
+    "愿你走出半生，归来仍是少年。",
+    "人生海海，山高路远。",
+    "慢慢来，一切都来得及。",
+    "所有的遗憾，都是为了更好的相遇。",
+    "别慌，月亮也正在大海某处迷茫。",
+    "温柔半两，从容一生。"
+  ],
+  "song_pool": [
+    "《晴天》- 周杰伦",
+    "《告白气球》- 周杰伦",
+    "《小幸运》- 田馥甄",
+    "《匆匆那年》- 王菲",
+    "《后来》- 刘若英",
+    "《成都》- 赵雷",
+    "《演员》- 薛之谦",
+    "《体面》- 于文文"
+  ],
+  "event_settings": {
+    "random_event_probability": 0.05,
+    "max_events_per_day": 3,
+    "achievement_check_frequency": "on_message",
+    "weather_check_frequency": "daily",
+    "holiday_check_frequency": "daily"
+  }
+}
