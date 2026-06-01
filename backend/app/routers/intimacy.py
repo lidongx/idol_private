@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict
 
 from app.database import get_db
-from app.auth import get_current_user
+from app.core.dependencies import get_current_user
 from app.models.user import User
 from app.services.intimacy_service import IntimacyService
 

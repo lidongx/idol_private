@@ -9,7 +9,7 @@ from datetime import date
 from pydantic import BaseModel
 
 from app.database import get_db
-from app.auth import get_current_user
+from app.core.dependencies import get_current_user
 from app.models.user import User
 from app.services.daily_ritual_service import DailyRitualService
 from app.services.fortune_service import FortuneService

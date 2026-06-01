@@ -10,7 +10,8 @@ from sqlalchemy.orm import Session
 
 from app.models.user import User
 from app.models.account_deletion import AccountDeletionRequest
-from app.models.conversation import Conversation, Message
+from app.models.conversation import Conversation
+from app.models.message import Message
 from app.models.memory import Memory
 from app.models.intimacy import Intimacy
 from app.models.achievement import UserAchievement

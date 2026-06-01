@@ -6,7 +6,8 @@ from typing import List, Dict, Any, Optional
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 
-from app.models.conversation import Conversation, Message
+from app.models.conversation import Conversation
+from app.models.message import Message
 from app.services.memory_service import MemoryService
 from app.services.ai.ai_provider import AIProvider
 
